@@ -41,7 +41,7 @@ export default {
     // Method to show the details of a user on the Map
     // triggered by clicking the marker
     async showUserCard(userId) {
-      const res = await axios.get('https://wherechat-server.herokuapp.com/user/get-user/' + userId, {
+      const res = await axios.get(store.state.serverDomain + 'user/get-user/' + userId, {
         headers: {
           Authorization: `Bearer ${store.state.token}`
         }
@@ -52,7 +52,7 @@ export default {
     // Method to Render Map
     async renderMap(latitude, longitude, showMapMarker) {
       try {
-        const res = await axios.get('https://wherechat-server.herokuapp.com/user/location', {
+        const res = await axios.get(store.state.serverDomain + 'user/location', {
           headers:{
             Authorization: `Bearer ${store.state.token}`
           }

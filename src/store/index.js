@@ -13,7 +13,7 @@ export default createStore({
     latitude: latitude,
     longitude: longitude,
     showMapMarker: showMapMarker,
-    serverDomain: 'https://wherechat-server.herokuapp.com/',
+    serverDomain: 'http://localhost:3000/',
     user: user,
     token: token,
     showEdit: true,
