@@ -1,25 +1,73 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import AuthView from '../views/AuthView.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'Home',
+    component: HomeView,
+    meta: {
+      title: 'Home',
+    },
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/login',
+    name: 'Login',
+    component: AuthView,
+    meta: {
+      title: 'Login'
+    }
+  },
+  {
+    path: '/messages',
+    name: 'Messages',
+    component: () => import('../views/MessagesView.vue'),
+    meta: {
+      title: 'Messages',
+    },
+    children: [
+      {
+        path: ':userId',
+        name: 'MessageUserId',
+        component: () => import('../components/MessageComponent.vue'),
+        meta: {
+          title: 'Message',
+        }
+      }
+    ]
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('../views/ProfileView.vue'),
+    meta: {
+      title: 'Profile',
+      authRequired: true
+    }
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: () => import('../views/SearchView.vue'),
+    meta: {
+      title: 'Search',
+      authRequired: true
+    }
   }
 ]
-
+/* eslint-disable */
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from) => {
+  document.title = `${process.env.VUE_APP_TITLE} - ${to.meta.title}`
+  if(!localStorage.getItem('user') && to.name !== 'Login') {
+    return { name: 'Login' }
+  }
+  return true
 })
 
 export default router
