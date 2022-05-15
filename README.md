@@ -59,6 +59,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## License
 This project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) License
 
-## Show Some Suport
+## Show Support
 ⭐️  ⭐️  ⭐️
 
