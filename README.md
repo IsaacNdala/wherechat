@@ -4,7 +4,7 @@
 ## About the project
 Wherechat is a chat application that allows users to find and meet each other through their location on the map.
 
-This is the frontend of the application, the backend can find [here](https://github.com/IsaacNdala/wherechat-backend/).
+This is the frontend of the application, the backend can found [here](https://github.com/IsaacNdala/wherechat-backend/).
 
 ## Built With
 * [Vue.js](https://vuejs.org/)
