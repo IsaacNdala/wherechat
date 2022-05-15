@@ -1,15 +1,6 @@
 # wherechat
 ![](project-image.png)
 
-## Table of Contents
-* [About the Project](https://github.com/IsaacNdala/wherechat#about-the-project)
-* [Built With](https://github.com/IsaacNdala/wherechat#built-with)
-* [Live Demo](https://github.com/IsaacNdala/wherechat#live-demo)
-* [Project Setup](https://github.com/IsaacNdala/wherechat#getting-started)
-* [Author](https://github.com/IsaacNdala/wherechat#author)
-* [Contributing](https://github.com/IsaacNdala/wherechat#contributing)
-* [License](https://github.com/IsaacNdala/wherechat#license)
-
 ## About the project
 Wherechat is a chat application that allows users to find and meet each other through their location ond the map.
 
