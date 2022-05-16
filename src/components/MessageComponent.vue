@@ -28,7 +28,7 @@
 
     <div class="message-component__body">
       <div class="message-component__body__head">
-        <div class="message-component__body__head__img-container border">
+        <div @click="scrollBottom" class="message-component__body__head__img-container border">
           <img :src="serverDomain + userInChat.imageUrl" alt="" />
         </div>
         <div class="message-component__body__head__info">
@@ -97,9 +97,15 @@ export default {
     '$route'(to) {
       this.messageForm.to = to.params.userId
       this.fetchMessages()
-    }
+    },
   },
   methods: {
+    // Method to auto scroll de message page
+    scrollBottom() {
+      let messageComponent = document.getElementById('message-component')
+      messageComponent.scrollTo(0, messageComponent.scrollHeight)
+    },
+    // Method to send message
     async sendMessage() {
       let res
       if(this.messageForm.content !== '') {
@@ -114,6 +120,7 @@ export default {
         this.messageForm.content = ''
       }
     },
+    // Method to get the messages on chat
     async fetchMessages() {
       try {
         const res = await axios.get(store.state.serverDomain + 'message/view-messages/' + this.messageForm.to, {
@@ -133,6 +140,7 @@ export default {
         }
       }
     },
+    // Method to get user information on chat
     async fetchUser() {
       try {
         const res = await axios.get(store.state.serverDomain + 'user/get-user/' + this.messageForm.to, { 
@@ -153,12 +161,19 @@ export default {
     this.fetchMessages()
   },
   mounted() {
+    if(document.getElementById('message-component')) {
+      console.log('mounted')
+    }
     const socket = openSocket(store.state.serverDomain)
     socket.on('messages', data => {
       if(data.action === 'sent') {
         this.messages.push(data.message)
+        this.scrollBottom()
       }
     })
+  },
+  updated() {
+    this.scrollBottom()
   }
 };
 </script>
@@ -176,7 +191,9 @@ export default {
   overflow: auto;
   z-index: 200;
   padding-top: 6rem;
-  padding-bottom: 10rem;
+  padding-bottom: 8rem;
+  max-height: 100vh;
+  overflow: auto;
 
   .message-component__nav {
     position: absolute;
@@ -370,6 +387,7 @@ export default {
     width: 60%;
     right: 0;
     z-index: 50;
+    padding-bottom: 12rem; 
 
     .message-component__message-form-container {
       width: 60%;

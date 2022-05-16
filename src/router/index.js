@@ -8,7 +8,7 @@ const routes = [
     name: 'Home',
     component: HomeView,
     meta: {
-      title: 'Home',
+      title: 'Home'
     },
   },
   {
@@ -24,7 +24,7 @@ const routes = [
     name: 'Messages',
     component: () => import('../views/MessagesView.vue'),
     meta: {
-      title: 'Messages',
+      title: 'Messages'
     },
     children: [
       {
@@ -32,7 +32,7 @@ const routes = [
         name: 'MessageUserId',
         component: () => import('../components/MessageComponent.vue'),
         meta: {
-          title: 'Message',
+          title: 'Message'
         }
       }
     ]
@@ -42,8 +42,7 @@ const routes = [
     name: 'Profile',
     component: () => import('../views/ProfileView.vue'),
     meta: {
-      title: 'Profile',
-      authRequired: true
+      title: 'Profile'
     }
   },
   {
@@ -51,15 +50,21 @@ const routes = [
     name: 'Search',
     component: () => import('../views/SearchView.vue'),
     meta: {
-      title: 'Search',
-      authRequired: true
+      title: 'Search'
     }
   }
 ]
 /* eslint-disable */
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
 router.beforeEach((to, from) => {
