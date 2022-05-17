@@ -205,7 +205,7 @@ export default {
   margin-top: 5rem;
   padding: 0.5rem 0;
   width: 100%;
-  max-height: 100vh;
+  height: 100vh;
   overflow: auto;
 
   .messages__container__title,

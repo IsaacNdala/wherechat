@@ -179,6 +179,10 @@ export default {
 </script>
 
 <style lang="scss">
+.message-component::-webkit-scrollbar {
+  width: 20px;
+}
+
 .message-component {
   position: relative;
   position: absolute;
