@@ -374,7 +374,7 @@ export default {
       display: flex;
 
       button {
-        padding: 1rem 0.5rem;
+        padding: .7rem 0.5rem;
         color: white;
         font-weight: bold;
         border: none;
