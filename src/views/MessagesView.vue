@@ -202,8 +202,7 @@ export default {
 
 <style lang="scss">
 .messages__container {
-  margin-top: 5rem;
-  padding: 0.5rem 0;
+  padding: 5.5rem 0;
   width: 100%;
   height: 100vh;
   overflow: auto;
@@ -221,7 +220,6 @@ export default {
       background-position: 1rem 50%;
       background-size: 15px;
       padding-left: 2.5rem;
-      // background-color: #e4e6ebb7;
       border-radius: 2rem;
     }
 
@@ -232,7 +230,6 @@ export default {
   }
 
   .messages__items {
-    margin-bottom: 5rem;
     a {
       display: flex;
       align-items: center;
